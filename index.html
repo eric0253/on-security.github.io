@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>On Security | Saúde e Segurança do Trabalho</title>
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon"/>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="nav">
+        <div class="nav-logo">
+          <p>On Security</p>
+        </div>
+        <!--
+          <div class="nav-menu" id="navMenu">
+                  <ul>
+                      <li><a href="#" class="link active">Inicio</a></li>
+                      <li><a href="#" class="link">Serviços</a></li>
+                      <li><a href="#" class="link">Sobre</a></li>
+                  </ul>
+              </div> 
+          -->
+        <div class="nav-button">
+		  <button class="btn white-btn" style="margin-left: 650px;" id="loginBtn" onclick="scrollToTop(); HideVerticalScrollBar(); login()">Login</button>
+          <button class="btn" style="margin-right: 10px;" id="registerBtn" onclick="scrollToTop(); ShowVerticalScrollBar(); register_company(); btnChangeHeight()">Cadastre-se</button>
+        </div>
+        <div class="nav-menu-btn">
+          <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+      </nav>
+      <!----------------------------- Form Box ----------------------------------->    
+      <div class="form-box">
+        <!------------------- Formulario de Login -------------------------->
+        <form id="login" class="login-container" method="post" action="assets/php/login.php">
+          <div class="top">
+            <header>Login</header>
+          </div>
+          <div class="input-box">
+            <input type="text" name="usuario" class="input-field" placeholder="Nome da Empresa" minlength="0" maxlength="100" required>
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" name="senha" class="input-field" placeholder="Senha" minlength="0" maxlength="100" required>
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+           <!-- Checa o bd -->
+		   <input type="submit" class="submit" value="Entrar">
+<!--Esse aqui pula a tela e não checa o bd <a href="#" onclick="scrollToTop(); HideVerticalScrollBar(); logged_in()"><button class="submit">Entrar</button></a> -->
+
+          </div>
+         <!-- <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="login-check">
+              <label for="login-check">Lembrar de mim</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Esqueceu a senha?</a></label>
+            </div>
+          </div>
+          <div class="bottom">
+            <span>Não possui uma conta? <a href="#" onclick="scrollToTop(); HideVerticalScrollBar(); register_company()">Cadastre-se</a></span>
+          </div> -->
+        </form>
+        <!------------------- Usuario Logado -------------------------->
+        <div class="welcome_screen-container" id="logged_in">
+          <div class="top">
+            <br>
+            <br>
+            <header>Seja Bem-Vindo(a)</header>
+          </div>
+          <br>
+           <div class="input-box">
+           <!-- <a href="#" onclick="register_company()"><button class="submit">Lista de Funcionários</button></a> -->
+            </div> 
+            <br>
+          <div class="input-box">
+           <a href="#" id="resetBtn" onclick="scrollToTop(); ShowVerticalScrollBar(); register_employee(); resetHeight();"><button class="submit">Cadastrar Funcionários</button></a>
+          </div>
+        </div>
+        <!------------------- Registrar: Empresa -------------------------->
+        <form id="register_company" class="company-container" method="post" action="assets/php/cd_empresa.php">
+          <div class="top">
+            <header>Cadastre-se</header>
+          </div>
+          <div class="input-box">
+            <select type="text" name="empresa" class="input-field" placeholder="Nome da Empresa" minlength="3" maxlength="100" required>
+			<option>empresateste</option>
+			</select>
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <select type="text" name="telefone" class="input-field" minlength="10" maxlength="11" placeholder="Telefone" required>
+			  <option>11913537808</option>
+			  </select>
+              <i class="bx bx-phone"></i>
+            </div>
+            <div class="input-box">
+              <select type="text" name="cnpj" class="input-field" id="cnpj" placeholder="CNPJ" minlength="14" maxlength="14" required>
+			   <option>93753915000181</option>
+			   </select>
+              <i class="bx bx-lock-alt"></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <select type="text" name="email" class="input-field" placeholder="E-mail" maxlength="60" required>
+			 <option>empresateste@gmail.com</option>
+			   </select>
+            <i class="bx bx-envelope"></i>
+          </div>
+		  <div class="input-box">
+              <select type="text" name="endereco" class="input-field" placeholder="Endereço" required>
+			   <option>Avenida dos Estados</option>
+			   </select>
+              <i class="bx bx-map"></i>
+            </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <select type="text" name="numero" class="input-field" placeholder="Numero" required>
+			   <option>527</option>
+			   </select>
+              <i class="bx bx-map"></i>
+            </div>
+			  <div class="input-box">
+              <select type="text" name="cep" class="input-field" id="cep" placeholder="CEP" minlength="8" maxlength="8" required>
+			   <option>11730000</option>
+			   </select>
+              <i class="bx bx-map"></i>
+            </div>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <select type="text" name="bairro" class="input-field" placeholder="Bairro" required>
+			   <option>Parque Central</option>
+			   </select>
+              <i class="bx bx-map"></i>
+            </div>
+            <div class="input-box">
+              <select type="text" name="cidade" class="input-field" placeholder="Cidade" required>
+			  <option>Mongaguá</option>
+			   </select>
+              <i class="bx bx-map"></i>
+            </div>
+            <div class="input-box">
+              <select type="text" name="estado" class="input-field" placeholder="Estado" required>
+                <option>SP</option>
+              </select>
+              <i class="bx bx-map"></i>
+            </div>
+          </div>
+		  <div class="two-forms">
+            <div class="input-box">
+              <select type="password" name="senha" class="input-field" id="senha" placeholder="Senha" minlength="8" maxlength="20" required>
+			   <option>12345678</option>
+              </select>
+              <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+              <select type="password" name="senha_c" class="input-field" id="senha_c" placeholder="Confirmar Senha" minlength="8" maxlength="20" required>
+			    <option>12345678</option>
+              </select>
+              <i class="bx bx-lock-alt"></i>
+            </div>
+		 </div>
+          <div class="input-box">
+            <input type="submit" class="submit" onclick="scrollToTop(); return validarSenha()" value="Cadastrar">
+          </div>
+           <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="register-check">
+              <label for="register-check"> Lembrar de mim</label>
+            </div>
+          
+          </div>  
+          <div class="bottom">
+            <span>Já possui uma conta? <a href="#" onclick="scrollToTop(); HideVerticalScrollBar(); login()">Login</a></span>
+          </div>
+        </form>
+        <!------------------- Cadastro Funcionario -------------------------->
+        <form id="register_employee" class="employee-container" method="post" action="assets/php/cd_funcionario.php">
+		  <div class="top"> 
+            <header>Cadastrar Funcionário</header>
+          </div>
+		</br>
+          <div class="input-box">
+            <input type="text" name="funcionario" class="input-field" placeholder="Nome do Funcionário" minlength="3" maxlength="100" required>
+            <i class="bx bx-user"></i>
+          </div>
+		   <div class="two-forms">
+            <div class="input-box">
+              <input type="text" name="rg" class="input-field rg" id="rg" placeholder="RG" minlength="5" maxlength="15" required>
+              <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" name="cpf" class="input-field cpf" id="cpf" placeholder="CPF" minlength="11" maxlength="11" required>
+              <i class="bx bx-lock-alt"></i>
+            </div>
+			 <div class="input-box">
+              <input type="text" name="date" class="input-field date" id="date" placeholder="Data de Nasc." minlength="8" maxlength="8" required>
+              <i class="bx bx-calendar"></i>
+            </div>
+          </div>
+		  <!-- <center><h6>Contato</h6></center> -->
+          <div class="two-forms">
+            <div class="input-box">
+              <input type="text" name="telefone" class="input-field phone" id="phone" minlength="10" maxlength="11" placeholder="Telefone" required>
+              <i class="bx bx-phone"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" name="email" class="input-field" placeholder="E-mail"  maxlength="60"  required>
+              <i class="bx bx-envelope"></i>
+            </div>
+          </div>
+		  <div class="input-box">
+              <input type="text" name="endereco" class="input-field" placeholder="Endereço" required>
+              <i class="bx bx-map"></i>
+            </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <input type="text" name="numero" class="input-field" placeholder="Numero" required>
+              <i class="bx bx-map"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" name="cep" class="input-field cep" id="cep" placeholder="CEP" minlength="8" maxlength="8" required>
+              <i class="bx bx-map"></i>
+            </div>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <input type="text" name="bairro" class="input-field" placeholder="Bairro" required>
+              <i class="bx bx-map"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" name="cidade" class="input-field" placeholder="Cidade" required>
+              <i class="bx bx-map"></i>
+            </div>
+            <div class="input-box">
+              <select type="text" name="estado" class="input-field" placeholder="Estado" required>
+                <option>UF</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="ES">ES</option>
+                <option value="DF">DF</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select>
+              <i class="bx bx-map"></i>
+            </div>
+          </div>
+		  <div class="input-box">	
+            <button class="submit" id="openPopup">Ficha do Funcionário</button>
+          </div>
+		  <input type="submit" class="submit" onclick="scrollToTop(); ShowVerticalScrollBar()" value="Finalizar Cadastro" style="margin-top: 10px">
+          </div>
+        </form>
+      </div>
+    </div>
+  
+	
+<!-- Abrir pagina em pop-up -->
+<script>
+document.getElementById("openPopup").addEventListener("click", function() {
+  var popupURL = "./assets/ficha_funcionario.html";
+  
+  // Configurações da janela popup (largura, altura e outras opções)
+  var popupConfig = "width=600, height=600, resizable=yes, scrollbars=yes";
+  
+  // Abre a janela popup
+  window.open(popupURL, "PopupWindow", popupConfig);
+});
+</script>
+
+<!-- Menu de Navegação Responsivo -->
+<script>
+      function myMenuFunction() {
+       var i = document.getElementById("navMenu");
+      
+       if(i.className === "nav-menu") {
+           i.className += " responsive";
+       } else {
+           i.className = "nav-menu";
+       }
+      }      
+</script>
+	
+<!-- Animação para transicionar entre as Paginas -->
+<script>
+      var a = document.getElementById("loginBtn");
+      var b = document.getElementById("registerBtn");
+      var x = document.getElementById("login");
+      var y = document.getElementById("logged_in");
+      var z = document.getElementById("register_company");
+      var w = document.getElementById("register_employee");
+      var v = document.getElementById("register_employee_form");
+      
+      
+      function login() {
+          x.style.left = "4px";
+          y.style.right = "-520px";
+      z.style.right = "-1080px";
+      w.style.right = "-1600px";
+      v.style.right = "-2120px";
+          a.className += " white-btn";
+          b.className = "btn";
+          x.style.opacity = 1;
+          y.style.opacity = 0;
+      }
+      
+      function logged_in() {
+          x.style.left = "-510px";
+          y.style.right = "5px";
+      z.style.right = "-510px";
+      w.style.right = "-1080px";
+      v.style.right = "-1600px";
+          a.className = " btn";
+          b.className += " btn";
+          x.style.opacity = 0;
+          y.style.opacity = 1;
+		  z.style.opacity = 0;
+		  w.style.opacity = 0;
+		  v.style.opacity = 0;
+      }
+      function register_company() {
+          x.style.left = "-1020px";
+          y.style.right = "520px";
+      z.style.right = "5px";
+      w.style.right = "-510px";
+      v.style.right = "-1800px";
+          a.className = "btn";
+		  b.className += " white-btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 1;
+		  w.style.opacity = 0;
+		  v.style.opacity = 0;
+      }
+      
+      function register_employee() {
+          x.style.left = "-1560px";
+          y.style.right = "520px";
+      z.style.right = "-520px";
+      w.style.right = "5px";
+      v.style.right = "-510";
+          a.className = "btn";
+      b.className = "btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 0;
+		  w.style.opacity = 1;
+		  v.style.opacity = 0;
+      }
+      
+      function register_employee_form() {
+          x.style.left = "-2120px";
+          y.style.right = "1560px";
+      w.style.right = "520px";
+      v.style.right = "-510px";
+          a.className = "btn";
+      b.className = "btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 0;
+		  w.style.opacity = 0;
+		  v.style.opacity = 1;
+      }
+</script>
+	
+<!-- Conferir se a senha é igual a do campo verificar senha -->
+	<script>
+	let senha = document.getElementById('senha');
+	let senhaC = document.getElementById('senha_c');
+
+function validarSenha() {
+  if (senha.value != senhaC.value) {
+    senhaC.setCustomValidity("As senhas são diferentes!");
+    senhaC.reportValidity();
+    return false;
+  } else {
+    senhaC.setCustomValidity("");
+    return true;
+  }
+}
+
+// verificar também quando o campo for modificado, para que a mensagem suma quando as senhas forem iguais
+senhaC.addEventListener('input', validarSenha);
+</script>
+
+<!-- Mascara para Inputs -->
+<script type="text/javascript">
+      $(".cnpj").mask("00.000.000/0000-00");
+	  $(".phone").mask("(00) 00000-0000");
+      $(".cpf").mask("000.000.000-00");
+      $(".rg").mask("00.000.000-0");
+	  $(".date").mask("00/00/0000");
+      $(".cep").mask("00000-000");
+</script>
+
+<!-- Verificação de Login -->	
+<script>
+      document.querySelector("#login").addEventListener("submit", function (e) {
+          e.preventDefault(); // Impede o envio padrão do formulário
+          
+          // Recupere os valores do formulário
+          const usuario = document.querySelector("input[name='usuario']").value;
+          const senha = document.querySelector("input[name='senha']").value;
+      
+          // Envie os dados do formulário via AJAX
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "assets/php/login.php", true);
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4 && xhr.status === 200) {
+                  const response = JSON.parse(xhr.responseText);
+      
+                  if (response.success) {
+                      // Login bem-sucedido, redirecionar ou realizar outras ações necessárias
+                      logged_in();
+                  } else {
+                      // Exibir mensagem de erro
+                      alert("Erro: " + response.message);
+      // Voltar para a página anterior
+      login();
+                  }
+              }
+          };
+      
+          const formData = `usuario=${usuario}&senha=${senha}`;
+          xhr.send(formData);
+      });
+    </script>
+
+<!-- Função para rolar para o início da página -->
+<script>
+	function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Isso faz a rolagem ser suave e animada
+    });
+}
+
+// Adiciona um ouvinte de eventos ao botão
+document.getElementById("scrollToTopButton").addEventListener("click", scrollToTop);
+</script>
+
+<!-- Mostrar barra de rolagem vertical -->
+<script>
+function ShowVerticalScrollBar() {
+    document.body.style.overflowY = "scroll";
+}
+</script>
+
+<!-- Esconder barra de rolagem vertical -->
+<script>
+function HideVerticalScrollBar() {
+    document.body.style.overflowY = "hidden";
+}
+</script>
+
+<script>
+// Selecione o botão "Reverter" por ID
+const resetBtn = document.getElementById('resetBtn');
+
+// Adicione um evento de clique ao botão "Reverter"
+resetBtn.addEventListener('click', function() {
+    // Altere a altura de volta para 1000px
+    formBox.style.height = '780px';
+});
+
+// A função para a mudança de altura original
+const btnChangeHeight = document.getElementById('registerBtn');
+const formBox = document.querySelector('.form-box');
+btnChangeHeight.addEventListener('click', function() {
+    formBox.style.height = '780px';
+});
+</script>
+
+<!-- Apos o Login -->
+<script>
+    // Função para rolar para o início da página
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Isso faz a rolagem ser suave e animada
+        });
+    }
+
+    // Esconder barra de rolagem vertical
+    function HideVerticalScrollBar() {
+        document.body.style.overflowY = "hidden";
+    }
+
+    // Função para lidar com a resposta JSON após o login
+    function handleLoginResponse(response) {
+        if (response.success) {
+            // Se o login for bem-sucedido, execute as funções JavaScript
+            scrollToTop();
+            HideVerticalScrollBar();
+        }
+    }
+
+    // Você precisa chamar esta função para processar a resposta do PHP
+    // Supondo que você está fazendo uma solicitação AJAX para o PHP, você pode usar o fetch API ou jQuery AJAX, por exemplo.
+    // Aqui está um exemplo usando o fetch API:
+
+    fetch('seu_script_php.php', {
+        method: 'POST',
+        // Inclua as informações do formulário (usuário e senha) na solicitação
+        body: JSON.stringify({ usuario: 'seu_usuario', senha: 'sua_senha' }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => handleLoginResponse(data))
+    .catch(error => console.error('Erro:', error));
+</script>
+
+</body>
+</html>

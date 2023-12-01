@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>On Security | Saúde e Segurança do Trabalho</title>
+    <link rel="icon" href="img/favicon.png" type="image/x-icon"/>
+  </head>
+ <body onload="HideVerticalScrollBar()">
+    <div class="wrapper">
+      <nav class="nav">
+        <div class="nav-logo">
+          <p>On Security</p>
+        </div>
+      </nav>
+            <!----------------------------- Form Box ----------------------------------->    
+     <div class="form-box-employee_form">
+        <!------------------- Formulario de Login -------------------------->
+         <form id="login" class="employee_form-container" enctype="multipart/form-data" action="php/employee_form.php">
+          <div class="top">
+            <header>Cadastrar Ficha do Funcionário</header>
+          </div>
+		   <div class="input-box" style="display: flex; justify-content: center;">
+			<label class="picture" for="picture__input" tabIndex="0">
+				<span class="picture__image"></span>
+			</label>
+			<input type="file" name="image" id="picture__input">
+		</div>
+		<br>
+		 <div class="input-box">
+              <input type="text" name="funcao" class="input-field" placeholder="Função">
+              <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" name="setor" class="input-field" placeholder="Setor" required>
+              <i class="bx bx-user"></i>
+            </div>
+          <div class="two-forms">
+			<h6>Apto:</h6>
+				<label for="sim">Sim</label>
+			<center>
+				<input type="radio" id="sim" name="aptidao" value="1">
+				<label for="nao">Não</label>
+				<input type="radio" id="nao" name="aptidao" value="0">
+			</center>
+			</div>
+			<br>
+			 <div class="input-box">
+            <input type="submit" class="submit" value="Cadastrar Exames">
+          </div>
+          
+        </form>
+       </div> 
+    </div>
+	
+<!-- Animação para transicionar entre as Paginas -->
+<script>
+      var x = document.getElementById("login");
+      var y = document.getElementById("logged_in");
+      var z = document.getElementById("register_company");
+      var w = document.getElementById("register_employee");
+      var v = document.getElementById("register_employee_form");
+      
+      
+      function login() {
+          x.style.left = "4px";
+          y.style.right = "-520px";
+      z.style.right = "-1080px";
+      w.style.right = "-1600px";
+      v.style.right = "-2120px";
+          a.className += " white-btn";
+          b.className = "btn";
+          x.style.opacity = 1;
+          y.style.opacity = 0;
+      }
+      
+      function logged_in() {
+          x.style.left = "-510px";
+          y.style.right = "5px";
+      z.style.right = "-510px";
+      w.style.right = "-1080px";
+      v.style.right = "-1600px";
+          a.className = " btn";
+          b.className += " btn";
+          x.style.opacity = 0;
+          y.style.opacity = 1;
+		  z.style.opacity = 0;
+		  w.style.opacity = 0;
+		  v.style.opacity = 0;
+      }
+      function register_company() {
+          x.style.left = "-1020px";
+          y.style.right = "520px";
+      z.style.right = "5px";
+      w.style.right = "-510px";
+      v.style.right = "-1800px";
+          a.className = "btn";
+		  b.className += " white-btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 1;
+		  w.style.opacity = 0;
+		  v.style.opacity = 0;
+      }
+      
+      function register_employee() {
+          x.style.left = "-1560px";
+          y.style.right = "520px";
+      z.style.right = "-520px";
+      w.style.right = "5px";
+      v.style.right = "-510";
+          a.className = "btn";
+      b.className = "btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 0;
+		  w.style.opacity = 1;
+		  v.style.opacity = 0;
+      }
+      
+      function register_employee_form() {
+          x.style.left = "-2120px";
+          y.style.right = "1560px";
+      w.style.right = "520px";
+      v.style.right = "-510px";
+          a.className = "btn";
+      b.className = "btn";
+          x.style.opacity = 0;
+          y.style.opacity = 0;
+		  z.style.opacity = 0;
+		  w.style.opacity = 0;
+		  v.style.opacity = 1;
+      }
+</script>
+	
+<!-- Preview da Foto do Funcionario -->
+<script>
+const inputFile = document.querySelector("#picture__input");
+const pictureImage = document.querySelector(".picture__image");
+const pictureImageTxt = "Adicionar Foto";
+pictureImage.innerHTML = pictureImageTxt;
+
+inputFile.addEventListener("change", function (e) {
+  const inputTarget = e.target;
+  const file = inputTarget.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function (e) {
+      const readerTarget = e.target;
+
+      const img = document.createElement("img");
+      img.src = readerTarget.result;
+      img.classList.add("picture__img");
+
+      pictureImage.innerHTML = "";
+      pictureImage.appendChild(img);
+    });
+
+    reader.readAsDataURL(file);
+  } else {
+    pictureImage.innerHTML = pictureImageTxt;
+  }
+});
+</script>
+</body>
+</html>
