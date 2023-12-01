@@ -1,8 +1,8 @@
 <?php
 /*Criando conexão com o banco de dados */
 $servidor = 'localhost';
-$user = 'root';
-$password = 'root';
+$user = 'rafael';
+$password = 'Felippe@4';
 $banco = 'programa';
 
 $conexao = mysqli_connect($servidor,$user,$password,$banco);
