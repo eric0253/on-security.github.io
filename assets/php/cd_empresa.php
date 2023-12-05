@@ -8,7 +8,6 @@ $banco = 'programa';
 $conexao = mysqli_connect($servidor,$user,$password,$banco);
 
 
-/*
 /*Recebendo dados do form */
 $empresa = $_POST ['empresa'];
 $telefone = $_POST ['telefone'];
@@ -39,5 +38,5 @@ if ($insert) {
 }
 
 mysqli_close($conexao);
-*/
+
 ?>
