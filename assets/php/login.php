@@ -2,7 +2,7 @@
 session_start();
 
 /* Criando conexão com o banco de dados */
-$servidor = 'localhost';
+$servidor = 'rafael.mysql.database.azure.com';
 $user = 'rafael';
 $password = 'Felippe@4';
 $banco = 'programa';
