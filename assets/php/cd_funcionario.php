@@ -22,7 +22,7 @@ $cpf = $_POST ['cpf'];
 $email = $_POST ['email'];
 
 /*Comando para insert into*/
-$sql = "INSERT INTO `funcionario` (`nm_funcinario`, `dt_nasc`, `nr_telefone`, `rg`, `cpf`, `nm_endereco`, `nr_endereco`, `nm_bairro`, `cep`, `nm_cidade`, `nm_estado`, `email`, `cnpj_empresa`) values ('$funcionario', '$date', '$telefone', '$rg', '$cpf', '$endereco', '$numero', '$bairro', '$cep', '$cidade', '$estado', '$email', '93753915000181');";
+$sql = "INSERT INTO `funcionario` (`nm_funcinario`, `dt_nasc`, `nr_telefone`, `rg`, `cpf`, `nm_endereco`, `nr_endereco`, `nm_bairro`, `cep`, `nm_cidade`, `nm_estado`, `email`, `cnpj_empresa`) values ('$funcionario', '$date', '$telefone', '$rg', '$cpf', '$endereco', '$numero', '$bairro', '$cep', '$cidade', '$estado', '$email', 93753915000181);";
 
         
 
