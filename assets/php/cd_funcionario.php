@@ -31,7 +31,8 @@ $sql = "INSERT INTO `funcionario` (`nm_funcinario`, `dt_nasc`, `nr_telefone`, `r
 $insert = mysqli_query($conexao, $sql);
 
 if ($insert) {
-    echo "Registro inserido com sucesso!";
+	echo "<script>alert('Registro inserido com sucesso!'); window.history.back();</script>";
+
 } else {
     echo "Erro ao inserir registro: " . mysqli_error($conexao);
 }
