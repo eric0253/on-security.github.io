@@ -13,7 +13,7 @@ $setor = $_POST['setor'];
 $apto = $_POST['aptidao'];
 
 /*Comando para insert into*/
-$sql = "INSERT INTO ficha (cd_ficha, id_funcionario, foto, funcao, setor, apto) values (null, '8', null, '$funcao', '$setor', '$apto')";
+$sql = "INSERT INTO ficha (cd_ficha, id_funcionario, foto, funcao, setor, apto) values (null, '9', null, '$funcao', '$setor', '$apto')";
 
 /*Comando para enviar os dados o banco*/
 $insert = mysqli_query($conexao, $sql);
